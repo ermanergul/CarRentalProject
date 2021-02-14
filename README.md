@@ -1,4 +1,4 @@
-### This Project, Engin Demirog's Live Camp Project..
+### This is, Engin Demirog's Live Camp Project..
 
 ## Project Name is Car Rental
 
