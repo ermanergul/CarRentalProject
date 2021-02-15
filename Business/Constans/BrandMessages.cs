@@ -12,5 +12,6 @@ namespace Business.Constans
         public static string Update = "Marka Bilgileri Değiştirildi";
         public static string Listed = "Markalar Listelendi";
         public static string NullData = "Böyle bir marka yok";
+        public static string Get = "Renk Gösterildi";
     }
 }

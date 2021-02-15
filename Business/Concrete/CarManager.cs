@@ -84,7 +84,7 @@ namespace Business.Concrete
             }
             
        
-            return new SuccessDataResult<List<Car>>(cars);
+            return new SuccessDataResult<List<Car>>(cars,CarMessages.Listed);
 
 
 
@@ -94,13 +94,13 @@ namespace Business.Concrete
         public IDataResult<List<CarDetailDto>> GetDetails()
         {
 
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(),CarMessages.Listed);
         }
 
         public IDataResult<Car> GetById(int carId)
         {
             
-            return new SuccessDataResult<Car>(_carDal.Get(c => c.CarID == carId));
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.CarID == carId),CarMessages.Get);
         }
 
        

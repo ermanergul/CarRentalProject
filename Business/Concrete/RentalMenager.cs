@@ -83,8 +83,16 @@ namespace Business.Concrete
             updatedRental.ReturnDate = DateTime.UtcNow;
             _rentalDal.Update(updatedRental);
             return new SuccessResult();
-
-            
+        }
+        public IResult Delete(Rental rental)
+        {
+            _rentalDal.Delete(rental);
+            return new SuccessResult(RentalMessages.Delete);
+        }
+        public IResult Update(Rental rental)
+        {
+            _rentalDal.Update(rental);
+            return new SuccessResult(RentalMessages.Update);
         }
     }
 }

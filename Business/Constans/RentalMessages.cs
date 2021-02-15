@@ -10,5 +10,7 @@ namespace Business.Constans
         public static string Error = "Hata!";
         public static string Listed = "Kiralanan Arabalar Listelendi";
         public static string NullData = "Kiralanan Araba Bulunmamakta";
+        public static string Delete = "Veri Silindi";
+        public static string Update = "Düzeltme İşlemi Tamamlandı !";
     }
 }

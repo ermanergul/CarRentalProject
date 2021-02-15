@@ -12,5 +12,6 @@ namespace Business.Constans
         public static string Update = "Araba Bilgileri Değiştirildi";
         public static string Listed = "Arabalar Listelendi";
         public static string NullData = "Bu aralıkta bir araba yok";
+        public static string Get = "Araba Gösterildi";
     }
 }

@@ -29,9 +29,27 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //
             services.AddControllers();
+            //brand referance 
+            services.AddSingleton<IBrandService, BrandManager>();
+            services.AddSingleton<IBrandDal, EfBrandDal>();
+            //car referance
             services.AddSingleton<ICarService, CarManager>();
             services.AddSingleton<ICarDal, EfCarDal>();
+            //color referance
+            services.AddSingleton<IColorService, ColorManager>();
+            services.AddSingleton<IColorDal, EfColorDal>();
+            //customer referance
+            services.AddSingleton<ICustomerService, CustomerManager>();
+            services.AddSingleton<ICustomerDal, EfCustomerDal>();
+            //rental referance
+            services.AddSingleton<IRentalService, RentalMenager>();
+            services.AddSingleton<IRentalDal, EfRentalDal>();
+            //user referance
+            services.AddSingleton<IUserService, UserManager>();
+            services.AddSingleton<IUserDal, EfUserDal>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
