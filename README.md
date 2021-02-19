@@ -28,3 +28,10 @@
 
 ![rentaltable](https://user-images.githubusercontent.com/56804374/107869149-ec659a80-6e9b-11eb-8972-8c4c3f315554.png)
 
+## WebAPI Layer
+
+### launchSettings.json
+![settingsjson](https://user-images.githubusercontent.com/56804374/107909227-d376eb00-6f68-11eb-87e4-a91b88580ecc.png)
+
+### startup class
+![startup](https://user-images.githubusercontent.com/56804374/107909397-281a6600-6f69-11eb-8d03-7d7c236135ac.png)
