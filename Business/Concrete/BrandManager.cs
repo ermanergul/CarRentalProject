@@ -1,5 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constans;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation.FluentValidation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Abstract;
 using Core.Utilities.Concrete;
 using DataAccess.Abstract;
@@ -17,9 +20,12 @@ namespace Business.Concrete
         {
             _branddal = brandDal;
         }
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Add(Brand brand)
         {
+            ValidationTool.Validate(new BrandValidator(), brand);
             _branddal.Add(brand);
+
             return new SuccessResult(BrandMessages.Added);
         }
         public IResult Delete(Brand brand)
@@ -37,9 +43,10 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<Brand>(_branddal.Get(b => b.BrandId == brandId),BrandMessages.Get);
         }
-
+        
         public IResult Update (Brand brand)
         {
+            ValidationTool.Validate(new BrandValidator(), brand);
             _branddal.Update(brand);
             return new SuccessResult(BrandMessages.Update);
         }

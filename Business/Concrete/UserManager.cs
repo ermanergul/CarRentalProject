@@ -1,5 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constans;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation.FluentValidation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Abstract;
 using Core.Utilities.Concrete;
 using DataAccess.Abstract;
@@ -17,8 +20,10 @@ namespace Business.Concrete
         {
             _userDal = userDal;
         }
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
+            ValidationTool.Validate(new UserValidator(), user);
             _userDal.Add(user);
 
             return new SuccessResult(UserMessages.Added);
@@ -48,6 +53,7 @@ namespace Business.Concrete
 
         public IResult Update(User user)
         {
+            ValidationTool.Validate(new UserValidator(), user);
             _userDal.Update(user);
             return new SuccessResult(UserMessages.Update);
         }

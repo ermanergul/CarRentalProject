@@ -38,7 +38,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpGet("updatecustomer")]
+        [HttpPost("updatecustomer")]
         public IActionResult Update(Customer customer)
         {
             var result = _customerService.Update(customer);

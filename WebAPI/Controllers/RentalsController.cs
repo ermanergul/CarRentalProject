@@ -48,26 +48,26 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        //[HttpGet("updaterental")]
-        //public IActionResult Update(Rental rental)
-        //{
-        //    var result = _rentaService.Update(rental);
-        //    if (result.Success)
-        //    {
-        //        return Ok(result);
-        //    }
-        //    return BadRequest(result);
-        //}
-        //[HttpPost("deleterental")]
-        //public IActionResult Delete(Rental rental)
-        //{
-        //    var result = _rentalService.Delete(rental);
-        //    if (result.Success)
-        //    {
-        //        return Ok(result);
-        //    }
-        //    return BadRequest(result);
-        //}
+        [HttpPost("updaterental")]
+        public IActionResult Update(Rental rental)
+        {
+            var result = _rentalService.Update(rental);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpPost("deleterental")]
+        public IActionResult Delete(Rental rental)
+        {
+            var result = _rentalService.Delete(rental);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
         [HttpPost("addrental")]
         public IActionResult Add(Rental rental)
         {

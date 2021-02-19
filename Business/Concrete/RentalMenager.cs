@@ -1,5 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constans;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation.FluentValidation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Abstract;
 using Core.Utilities.Concrete;
 using DataAccess.Abstract;
@@ -19,9 +22,10 @@ namespace Business.Concrete
         {
             _rentalDal = rentalDal;
         }
-
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
+            //ValidationTool.Validate(new RentalValidator(), rental);
             var result = DeliveryDate(rental.CarId);
             if (result.Success)
             {
@@ -30,9 +34,9 @@ namespace Business.Concrete
             return new ErrorResult(RentalMessages.Error);
         }
 
-        public IResult DeliveryDate(int carId)
+        public IResult DeliveryDate(int carId)//DeliveryDate = Teslim Tarihi
         {
-            var result = _rentalDal.GetRentalDetails(r => r.CarId == carId && r.ReturnDate == null);
+            var result = _rentalDal.GetRentalDetails(r => r.CarId == carId && r.ReturnDate == null);//eğer returndate yoksa ve count 0 sa başarılı
             if (result.Count==0)
             {
                 return new SuccessResult(RentalMessages.Added);
@@ -76,10 +80,11 @@ namespace Business.Concrete
         {
             var result = _rentalDal.GetAll(c=>c.CarId==ıd);
             var updatedRental = result.LastOrDefault();
-            if (updatedRental.ReturnDate!=null)
+            if (updatedRental.ReturnDate != null)
             {
                 return new ErrorResult(RentalMessages.Error);
             }
+           
             updatedRental.ReturnDate = DateTime.UtcNow;
             _rentalDal.Update(updatedRental);
             return new SuccessResult();
@@ -91,6 +96,7 @@ namespace Business.Concrete
         }
         public IResult Update(Rental rental)
         {
+            ValidationTool.Validate(new RentalValidator(), rental);
             _rentalDal.Update(rental);
             return new SuccessResult(RentalMessages.Update);
         }
