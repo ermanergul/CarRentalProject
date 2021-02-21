@@ -23,7 +23,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(BrandValidator))]
         public IResult Add(Brand brand)
         {
-            ValidationTool.Validate(new BrandValidator(), brand);
+            //ValidationTool.Validate(new BrandValidator(), brand);
             _branddal.Add(brand);
 
             return new SuccessResult(BrandMessages.Added);
@@ -46,7 +46,7 @@ namespace Business.Concrete
         
         public IResult Update (Brand brand)
         {
-            ValidationTool.Validate(new BrandValidator(), brand);
+            //ValidationTool.Validate(new BrandValidator(), brand);
             _branddal.Update(brand);
             return new SuccessResult(BrandMessages.Update);
         }

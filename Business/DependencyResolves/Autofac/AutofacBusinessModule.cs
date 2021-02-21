@@ -41,7 +41,9 @@ namespace Business.DependencyResolves.Autofac
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
+            
                 .EnableInterfaceInterceptors(new ProxyGenerationOptions()
                 {
                     Selector = new AspectInterceptorSelector()

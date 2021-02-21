@@ -24,7 +24,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CustomerValidator))]
         public IResult Add(Customer customer)
         {
-            ValidationTool.Validate(new CustomerValidator(), customer);
+            //ValidationTool.Validate(new CustomerValidator(), customer);
             _customerDal.Add(customer);
             return new SuccessResult(CustomerMessages.Added);
         }
@@ -47,7 +47,7 @@ namespace Business.Concrete
         }
         public IResult Update(Customer customer)
         {
-            ValidationTool.Validate(new CustomerValidator(), customer);
+            //ValidationTool.Validate(new CustomerValidator(), customer);
             _customerDal.Update(customer);
             return new SuccessResult(CustomerMessages.Update);
         }

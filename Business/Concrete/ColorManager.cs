@@ -24,7 +24,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(ColorValidator))]
         public IResult Add(Color color)
         {
-            ValidationTool.Validate(new ColorValidator(), color);
+            //ValidationTool.Validate(new ColorValidator(), color);
             _colorDal.Add(color);
             return new SuccessResult(ColorMessages.Added);
         }
@@ -47,7 +47,7 @@ namespace Business.Concrete
        
         public IResult Update(Color color)
         {
-            ValidationTool.Validate(new ColorValidator(), color);
+            //ValidationTool.Validate(new ColorValidator(), color);
             _colorDal.Update(color);
             return new SuccessResult(ColorMessages.Update);
         }

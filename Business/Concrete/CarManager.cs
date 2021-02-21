@@ -49,7 +49,7 @@ namespace Business.Concrete
             //{
             //    return new ErrorResult(CarMessages.DiscriptionInvalid);
             //}
-            ValidationTool.Validate(new CarValidator(), car);
+            //ValidationTool.Validate(new CarValidator(), car);
             _carDal.Add(car);
             return new SuccessResult(CarMessages.Added);
         }
@@ -61,7 +61,7 @@ namespace Business.Concrete
         
        public IResult Update(Car car)
         {
-            ValidationTool.Validate(new CarValidator(), car);
+            //ValidationTool.Validate(new CarValidator(), car);
             _carDal.Update(car);
             return new SuccessResult(CarMessages.Update);
 
